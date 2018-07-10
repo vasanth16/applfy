@@ -3,16 +3,19 @@
 import itunes
 
 def get_apple_track(song_url):
-    ind = song_url.index('?i=') + 3 #get index of true ID
-    true_id = song_url[ind:]
-    track = itunes.lookup(int(true_id))
-
-    return (track.name, str(track.artist)[8:])
-
+    try:
+        ind = song_url.index('?i=') + 3 #get index of true ID
+        true_id = song_url[ind:]
+        track = itunes.lookup(int(true_id))
+        return (track.name, str(track.artist)[8:])
+    except:
+        print ("Oops something went wrong")
 def get_apple_url(name, artist):
-    musician = itunes.search_artist(artist)[0]
-    for track in musician.get_tracks():
-        if track.name == name:
+    musician = itunes.search_artist(artist)
+    realArtist = musician[0]
+    for track in realArtist.get_tracks():
+        print(track.name )
+        if name in track.name:
             return str(track.url)
     print('Song not found.')
 

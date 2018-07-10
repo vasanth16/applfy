@@ -16,7 +16,7 @@ def get_spotify_track(obj, song_link):
     artists = layer2['name']    
     return (trackName['name'], artists)
 
-def get_spotify_link(track,artist):
+def get_spotify_link(token,track,artist):
     yes = spotipy.Spotify(auth=token)
     searched = yes.search(q='artist:' + artist + ' track:' + track,type='track',market='US')
     try:
