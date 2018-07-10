@@ -9,4 +9,12 @@ def get_apple_track(song_url):
 
     return (track.name, str(track.artist)[8:])
 
-#print(get_apple_track('https://itunes.apple.com/us/album/banana-breeze/1403834927?i=1403834930'))
+def get_apple_url(name, artist):
+    musician = itunes.search_artist(artist)[0]
+    for track in musician.get_tracks():
+        if name == track.name:
+            return str(track.url)
+    print('Song not found.')
+
+#print(get_apple_url('Never Letting Go', 'Vexento'))
+#print(get_apple_track('https://itunes.apple.com/us/album/never-letting-go/1216722412?i=1216722500'))
