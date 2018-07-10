@@ -9,9 +9,7 @@ import requests
 from spotipy import util as util
 import json
 import itunes
-from selenium import webdriver
 
-driver = webdriver.Safari()
 
 def main():
     link = input ("Please enter song link")
@@ -23,14 +21,12 @@ def main():
         trackname = spotify[0] 
         artist = spotify[1]
         apple = get_apple_url(trackname,artist)
-        driver.get(str(apple))
         return apple
     else:
         app = get_apple_track(link)
         trackname = app[0]
         artist = app[1]
         spot = get_spotify_link(trackname,artist)
-        driver.get(str(spot))
         return spot
 
 print(main())
