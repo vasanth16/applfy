@@ -32,4 +32,4 @@ def main():
         spot = get_spotify_link(token,trackname,artist)
         return spot
 
-print(main())
+main()
