@@ -15,7 +15,7 @@ def main():
     link = input ("Please enter song link")
     if 'spotify' in link:
         username = input('Please enter your spotify user name')
-        token = util.prompt_for_user_token(username=username, scope=None, client_id='b72f1627c1614421adc803989b16b19b', client_secret='268867b74222405baf2a176b3022d66e', redirect_uri='https://example.com/callback/')
+        token = util.prompt_for_user_token(username=username, scope=None, client_id='b72f1627c1614421adc803989b16b19b', client_secret='268867b74222405baf2a176b3022d66e', redirect_uri='https://example.com/callback/',cache_path=None)
         yes = spotipy.Spotify(auth=token)
         spotify = get_spotify_track(yes,link)
         trackname = spotify[0] 
@@ -25,11 +25,11 @@ def main():
         return apple
     else:
         username = input('Please enter your spotify user name')
-        token = util.prompt_for_user_token(username=username, scope=None, client_id='b72f1627c1614421adc803989b16b19b', client_secret='268867b74222405baf2a176b3022d66e', redirect_uri='https://example.com/callback/')
+        token = util.prompt_for_user_token(username=username, scope=None, client_id='b72f1627c1614421adc803989b16b19b', client_secret='268867b74222405baf2a176b3022d66e', redirect_uri='https://example.com/callback/',cache_path=None)
         app = get_apple_track(link)
         trackname = app[0]
         artist = app[1]
         spot = get_spotify_link(token,trackname,artist)
         return spot
 
-main()
+print(main())

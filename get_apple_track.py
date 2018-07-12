@@ -14,7 +14,8 @@ def get_apple_url(name, artist):
     musician = itunes.search_artist(artist)
     realArtist = musician[0]
     for track in realArtist.get_tracks():
-        if name in track.name:
+        name = str(name).lower()
+        if name in str(track.name).lower():
             return str(track.url)
     print('Song not found.')
 
