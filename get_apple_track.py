@@ -1,6 +1,6 @@
 #Felix Cui
-
 import itunes
+import webbrowser as wb
 
 def get_apple_track(song_url):
     try:
@@ -10,14 +10,14 @@ def get_apple_track(song_url):
         return (track.name, str(track.artist)[8:])
     except:
         print ("Oops something went wrong")
+
 def get_apple_url(name, artist):
     musician = itunes.search_artist(artist)
     realArtist = musician[0]
     for track in realArtist.get_tracks():
         name = str(name).lower()
         if name in str(track.name).lower():
-            return str(track.url)
+            print (str(track.url))
+            webbrowser.open(track.url[, new=0[, autoraise=True]])
     print('Song not found.')
 
-#print(get_apple_url('Never Letting Go', 'Vexento'))
-#print(get_apple_track('https://itunes.apple.com/us/album/never-letting-go/1216722412?i=1216722500'))
